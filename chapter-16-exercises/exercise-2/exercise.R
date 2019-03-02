@@ -7,7 +7,7 @@ library("ggplot2")
 # For this exercise you will again be working with the `diamonds` data set.
 # Use `?diamonds` to review details about this data set
 ?diamonds
-
+diamonds_sample <- sample_n(diamonds, 1000)
 ## Position Adjustments
 
 # Draw a column (bar) chart of diamonds cuts by price, with each bar filled by 
@@ -137,19 +137,48 @@ ggplot(data = diamonds_sample) +
 # For best results, SET the `width` of the geometry to be 1 (fill plot, no space
 # between)
 # TIP: You can save the plot to a variable for easier modifications
+ggplot(data = diamonds_sample) + 
+  geom_col(
+    mapping = aes(
+      x = cut,
+      y = price,
+      fill = cut
+    )
+  )
 
 # Draw the same chart, but with the coordinate system flipped
-
+ggplot(data = diamonds_sample) + 
+  geom_col(
+    mapping = aes(
+      x = cut,
+      y = price,
+      fill = cut
+    )
+  )  + coord_flip()
 
 # Draw the same chart, but in a polar coordinate system. It's a Coxcomb chart!
-
+ggplot(data = diamonds_sample) + 
+  geom_bar(
+    mapping = aes(
+      x = cut,
+      y = price,
+      fill = cut
+    )
+  ) + coord_polar()
 
 
 ## Facets
 
 # Take the scatter plot of price by carat data (colored by clarity) and add 
 # _facets_ based on the diamond's `color`
-
+ggplot(data = diamonds_sample) + 
+  geom_col(
+    mapping = aes(
+      x = price,
+      y = carat,
+      color = clarity
+    )
+  ) + facet_grid()
 
 
 ## Saving Plots

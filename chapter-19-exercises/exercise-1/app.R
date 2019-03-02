@@ -2,10 +2,16 @@
 
 # Load the `shiny` package (install it in the R terminal if you haven't already)
 
-
+library("shiny")
 # Define a new `ui` variable. This variable should be assigned a `fluidPage()`
 # layout. The `fluidPage()` layout should be passed the following:
-
+my_ui <- fluidPage(
+  h1("First Shiny Websit"),
+  p(paste("I am ", strong(very), "excited about shiny")),
+  [src](https://media2.giphy.com/media/l3q2Ip7FrmPE33EiI/giphy.gif),
+  p(paste("I am", em(very), "excited about sliders")),
+  sliderInput(inputId = "slider", label = "Slider", value = 50, min = 10, max = 100)
+)
 
   # A first-level header (`h1()`) with the content "First Shiny Website"
 
@@ -35,4 +41,4 @@ server <- function(input, output) {
 }
 
 # Create a new `shinyApp()` using the above ui and server
-
+shinyApp(my_ui, server)
